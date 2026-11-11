@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom premium scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #E5E5E0;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C5C5BE;
+}
+
+/* Elegant and tactile global transition and focus effects on interactive form items */
+input, select, textarea {
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #D97706 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.08) !important;
+}
+
+/* Soft shimmer effect for active tabs/cards */
+@keyframes soft-shimmer {
+  0% { opacity: 0.85; }
+  50% { opacity: 1; }
+  100% { opacity: 0.85; }
+}
+
+.animate-shimmer {
+  animation: soft-shimmer 2s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   THEME 1: CLASSIC ESTATE (DEFAULT - WARM MINIMAL)
+   ========================================================================== */
+:root, [data-theme="classic"] {
+  --app-font-display: "Inter", sans-serif;
+  --app-font-body: "Inter", sans-serif;
+}

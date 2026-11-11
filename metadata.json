@@ -1,0 +1,6 @@
+{
+  "name": "MCM Estate Services",
+  "description": "A production-ready two-sided consignment auction platform for staff management and consignee portals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

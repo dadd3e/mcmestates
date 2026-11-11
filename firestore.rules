@@ -1,0 +1,28 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function to fetch the consignee's profile document
+    function getConsignee(consigneeId) {
+      return get(/databases/$(database)/documents/consignees/$(consigneeId)).data;
+    }
+
+    match /lots/{lotId} {
+      allow read, create: if true;
+      allow update: if 
+        // Admin user can always edit
+        request.auth != null || 
+        // Otherwise, enforce self-service and auction locks for consignees editing their own lot
+        (
+          resource.data.consigneeId != null &&
+          getConsignee(resource.data.consigneeId).serviceType == 'Self Service' &&
+          (resource.data.auctionId == null || resource.data.auctionId == '')
+        );
+      allow delete: if request.auth != null;
+    }
+
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
